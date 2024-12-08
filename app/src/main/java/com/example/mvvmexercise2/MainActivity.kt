@@ -10,6 +10,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeContentPadding
@@ -27,7 +28,7 @@ import com.example.mvvmexercise2.domain.model.Product
 import com.example.mvvmexercise2.ui.theme.MVVMExercise2Theme
 
 class MainActivity : ComponentActivity() {
-    val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +59,7 @@ class MainActivity : ComponentActivity() {
 private fun ProductList(products: List<Product>) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(space = 8.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
     ) {
         items(
             products,

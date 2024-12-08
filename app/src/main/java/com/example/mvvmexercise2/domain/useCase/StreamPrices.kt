@@ -45,7 +45,7 @@ class StreamPrices {
         flow {
             while (true) {
                 emit(variant1())
-                delay(3.seconds)
+                delay(1.seconds)
             }
         }
 }
