@@ -20,10 +20,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.mvvmexercise2.domain.model.Product
 import com.example.mvvmexercise2.ui.theme.MVVMExercise2Theme
 
@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     ProductList(
                         products =
                             viewModel.state
-                                .collectAsState()
+                                .collectAsStateWithLifecycle()
                                 .value.products,
                     )
                 }

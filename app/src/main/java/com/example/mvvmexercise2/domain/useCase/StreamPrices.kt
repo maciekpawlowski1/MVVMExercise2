@@ -1,10 +1,13 @@
 package com.example.mvvmexercise2.domain.useCase
 
+import android.util.Log
 import com.example.mvvmexercise2.domain.model.Money
 import com.example.mvvmexercise2.domain.model.Product
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import java.math.BigDecimal
 import kotlin.random.Random
 import kotlin.time.Duration.Companion.seconds
@@ -47,5 +50,9 @@ class StreamPrices {
                 emit(variant1())
                 delay(1.seconds)
             }
+        }.onCompletion {
+            Log.d("PricesStream", "Stream deactivated")
+        }.onStart {
+            Log.d("PricesStream", "Stream activated")
         }
 }
