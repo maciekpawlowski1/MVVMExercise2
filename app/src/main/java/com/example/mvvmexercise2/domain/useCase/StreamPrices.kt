@@ -17,7 +17,7 @@ class StreamPrices {
                 name = "Czekolada",
                 price =
                     Money(
-                        amount = BigDecimal(Random.nextInt(100, 110)).setScale(2),
+                        amount = BigDecimal(Random.nextInt(103, 110)).setScale(2),
                         currency = "PLN",
                     ),
             ),
@@ -26,7 +26,7 @@ class StreamPrices {
                 name = "Masło",
                 price =
                     Money(
-                        amount = BigDecimal(Random.nextInt(107, 116)).setScale(2),
+                        amount = BigDecimal(Random.nextInt(102, 111)).setScale(2),
                         currency = "PLN",
                     ),
             ),

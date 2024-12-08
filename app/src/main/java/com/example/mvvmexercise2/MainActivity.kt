@@ -5,12 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,7 +34,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MVVMExercise2Theme {
-                Column(modifier = Modifier.safeContentPadding()) {
+                Column(
+                    modifier =
+                        Modifier
+                            .safeContentPadding()
+                            .fillMaxSize()
+                            .wrapContentSize(),
+                ) {
                     ProductList(
                         products =
                             viewModel.state
@@ -50,10 +59,18 @@ private fun ProductList(products: List<Product>) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(space = 8.dp),
     ) {
-        items(products) { product ->
+        items(
+            products,
+            key = {
+                it.id
+            },
+        ) { product ->
             ProductItem(
                 product = product,
-                modifier = Modifier.animateItemPlacement(),
+                modifier =
+                    Modifier.animateItemPlacement(
+                        tween(400),
+                    ),
             )
         }
     }
